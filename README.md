@@ -21,7 +21,7 @@
 
 <br/><br/>
 
-<a href="https://Saniya1312S.github.io/BacMotionAI-ML/" target="_blank">
+<a href="https://Saniya1312S.github.io/Bacterial-MotionAI-ML/" target="_blank">
   <img src="https://img.shields.io/badge/🌐_LIVE_DASHBOARD-Open_Interactive_Simulator-6366f1?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live Site"/>
 </a>
 
@@ -31,7 +31,7 @@
 
 <br/>
 
-[🌐 Live Dashboard](https://Saniya1312S.github.io/BacMotionAI-ML/) · [📸 Dashboard Preview](#-live-dashboard--interactive-simulator) · [🚀 Quick Start](#-quick-start) · [🏗️ Architecture](#-system-architecture) · [📊 ML Pipeline](#-end-to-end-mldl-pipeline) · [🤖 Model Results](#-mldl-models--evaluation) · [🧬 Features](#-dataset--14-trajectory-features)
+[🌐 Live Dashboard](https://Saniya1312S.github.io/Bacterial-MotionAI-ML/) · [📸 Dashboard Preview](#-live-dashboard--interactive-simulator) · [🚀 Quick Start](#-quick-start) · [🏗️ Architecture](#-system-architecture) · [📊 ML Pipeline](#-end-to-end-mldl-pipeline) · [🤖 Model Results](#-mldl-models--evaluation) · [🧬 Features](#-dataset--14-trajectory-features)
 
 </div>
 
@@ -40,11 +40,11 @@
 ## 🖥️ Live Dashboard
 
 <div align="center">
-  <a href="https://saniya1312s.github.io/BacMotionAI-ML/" target="_blank">
+  <a href="https://saniya1312s.github.io/Bacterial-MotionAI-ML/" target="_blank">
     <img src="Images/dashboard.png" width="920" alt="BacMotionAI Interactive Dashboard"/>
   </a>
   <br/>
-  <sub>👉 <b><a href="https://saniya1312s.github.io/BacMotionAI-ML/">Click here or the image above to launch the live simulator</a></b></sub>
+  <sub>👉 <b><a href="https://saniya1312s.github.io/Bacterial-MotionAI-ML/">Click here or the image above to launch the live simulator</a></b></sub>
 </div>
 
 ---
@@ -83,7 +83,7 @@
 
 ## 📸 Live Dashboard & Interactive Simulator
 
-> 🌐 **Live Web Demo**: [https://Saniya1312S.github.io/BacMotionAI-ML/](https://Saniya1312S.github.io/BacMotionAI-ML/)  
+> 🌐 **Live Web Demo**: [https://Saniya1312S.github.io/BacMotionAI-ML/](https://Saniya1312S.github.io/Bacterial-MotionAI-ML/)  
 > Anyone can launch and interact with the full simulator directly in their browser — zero setup required!
 
 ### Dashboard Features
