@@ -350,7 +350,7 @@ BacMotionAI-ML/
 ### 🌐 Dashboard (Zero Install)
 ```bash
 # Option 1: Visit the live site
-# https://Saniya1312S.github.io/BacMotionAI-ML/
+# https://Saniya1312S.github.io/Bacterial-MotionAI-ML/
 
 # Option 2: Run locally
 python -m http.server 8000
