@@ -1,0 +1,4 @@
+{
+  "best_model": "Random Forest",
+  "selected_by": "5-fold CV macro-F1 on training set"
+}

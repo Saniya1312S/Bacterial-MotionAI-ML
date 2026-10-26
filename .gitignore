@@ -1,41 +1,11 @@
-# Python
 __pycache__/
-*.py[cod]
-*$py.class
-*.egg-info/
-dist/
-build/
-.eggs/
-
-# Jupyter
+*.pyc
 .ipynb_checkpoints/
-
-# Virtual environments
-.env
-.venv
-env/
+.venv/
 venv/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# OS
 .DS_Store
-Thumbs.db
-Desktop.ini
+.pytest_cache/
 
-# Model artifacts (regenerate with scripts/train_models.py)
+# Keep only the best model in git; the others are re-created by scripts/train.py
 models/*.joblib
-models/*.pkl
-
-# Generated data (regenerate with scripts/generate_dataset.py)
-data/*.csv
-
-# Node
-node_modules/
-
-# Logs
-*.log
+!models/best_model.joblib

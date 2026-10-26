@@ -1,98 +1,42 @@
-"""
-BacMotionAI — ML Model Configurations
+"""Models and the small hyper-parameter grids that are searched with cross-validation.
 
-Defines the 4 machine learning models used for motility regime classification:
-Random Forest, Logistic Regression, XGBoost, and MLP Neural Network.
+Every model is a scikit-learn Pipeline (scaler -> classifier), so the scaler is
+re-fitted inside every CV fold and can never see the validation data.
 """
-
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
-from sklearn.neural_network import MLPClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 
-try:
-    import xgboost as xgb
-    HAS_XGB = True
-except ImportError:
-    HAS_XGB = False
-
-# 5 motility regime labels
-REGIME_LABELS = [
-    'Inhibited',
-    'Wall-Guided',
-    'Chemotactic',
-    'Confined',
-    'Free-Swimming',
-]
+CLASS_NAMES = ["none", "attractant", "repellent", "antibiotic"]
 
 
-def build_random_forest() -> RandomForestClassifier:
-    """
-    Random Forest classifier with regularization to prevent overfitting.
-    Best performing model (~78% accuracy, ~0.94 ROC-AUC).
-    """
-    return RandomForestClassifier(
-        n_estimators=200,
-        max_depth=8,
-        min_samples_leaf=5,
-        min_samples_split=10,
-        max_features='sqrt',
-        random_state=42,
-        n_jobs=-1,
-    )
+def _pipe(clf) -> Pipeline:
+    return Pipeline([("scaler", StandardScaler()), ("clf", clf)])
 
 
-def build_logistic_regression() -> LogisticRegression:
-    """
-    Regularized Logistic Regression (baseline linear model).
-    ~62% accuracy, ~0.87 ROC-AUC.
-    """
-    return LogisticRegression(
-        C=0.5,
-        max_iter=1000,
-        multi_class='multinomial',
-        solver='lbfgs',
-        random_state=42,
-    )
+def get_models_and_grids() -> dict:
+    """Return {name: (pipeline, param_grid)}."""
+    return {
+        "Logistic Regression": (
+            _pipe(LogisticRegression(max_iter=2000, random_state=42)),
+            {"clf__C": [0.1, 1, 10]},
+        ),
+        "KNN": (
+            _pipe(KNeighborsClassifier()),
+            {"clf__n_neighbors": [5, 11, 21, 41]},
+        ),
+        "Random Forest": (
+            _pipe(RandomForestClassifier(n_estimators=200, random_state=42, n_jobs=-1)),
+            {"clf__max_depth": [4, 8, None], "clf__min_samples_leaf": [1, 5]},
+        ),
+        "Gradient Boosting": (
+            _pipe(GradientBoostingClassifier(n_estimators=100, random_state=42)),
+            {"clf__learning_rate": [0.05, 0.1], "clf__max_depth": [2, 3]},
+        ),
+    }
 
 
-def build_xgboost():
-    """
-    XGBoost gradient boosting classifier with early stopping support.
-    ~76% accuracy, ~0.93 ROC-AUC.
-    
-    Returns None if xgboost is not installed.
-    """
-    if not HAS_XGB:
-        print("Warning: xgboost not installed. Skipping XGBoost model.")
-        return None
-
-    return xgb.XGBClassifier(
-        n_estimators=500,
-        max_depth=4,
-        learning_rate=0.05,
-        subsample=0.8,
-        colsample_bytree=0.8,
-        reg_alpha=0.1,
-        reg_lambda=1.0,
-        eval_metric='mlogloss',
-        random_state=42,
-        n_jobs=-1,
-    )
-
-
-def build_mlp() -> MLPClassifier:
-    """
-    Multi-Layer Perceptron (MLP) neural network classifier.
-    ~74% accuracy, ~0.92 ROC-AUC.
-    Uses early stopping and L2 regularization.
-    """
-    return MLPClassifier(
-        hidden_layer_sizes=(64, 32),
-        activation='relu',
-        solver='adam',
-        alpha=0.01,           # L2 regularization
-        max_iter=500,
-        early_stopping=True,
-        validation_fraction=0.15,
-        random_state=42,
-    )
+def model_filename(name: str) -> str:
+    return name.lower().replace(" ", "_") + ".joblib"
