@@ -1,5 +1,0 @@
-baseline,accuracy,macro_f1
-Majority class,0.25,0.1
-"Decision tree (depth 3), all features",0.7875,0.7891447841641412
-"Decision tree (depth 3), mean_speed only",0.7875,0.7891447841641412
-"Logistic Regression, speed features only (3)",0.8083333333333333,0.80864823670411
