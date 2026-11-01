@@ -1,0 +1,5 @@
+model,cv_macro_f1,cv_std,best_params
+Random Forest,0.8836,0.0214,"{""max_depth"": null, ""min_samples_leaf"": 1}"
+Gradient Boosting,0.8805,0.0151,"{""learning_rate"": 0.1, ""max_depth"": 3}"
+Logistic Regression,0.8535,0.0181,"{""C"": 10}"
+KNN,0.7815,0.0201,"{""n_neighbors"": 11}"
