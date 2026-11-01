@@ -1,0 +1,108 @@
+{
+  "best_model": {
+    "best_model": "Random Forest",
+    "selected_by": "5-fold CV macro-F1 on training set"
+  },
+  "models": [
+    {
+      "name": "Random Forest",
+      "train_acc": 1.0,
+      "test_acc": 0.8729,
+      "test_acc_ci": [
+        0.8417,
+        0.9021
+      ],
+      "test_macro_f1": 0.8732,
+      "test_f1_ci": [
+        0.843,
+        0.9001
+      ],
+      "roc_auc": 0.9766,
+      "cv_macro_f1": 0.8836,
+      "cv_std": 0.0214,
+      "train_test_gap": 0.1271,
+      "best_params": "{\"max_depth\": null, \"min_samples_leaf\": 1}"
+    },
+    {
+      "name": "Gradient Boosting",
+      "train_acc": 0.9745,
+      "test_acc": 0.8792,
+      "test_acc_ci": [
+        0.8458,
+        0.9083
+      ],
+      "test_macro_f1": 0.8793,
+      "test_f1_ci": [
+        0.8475,
+        0.9066
+      ],
+      "roc_auc": 0.9776,
+      "cv_macro_f1": 0.8805,
+      "cv_std": 0.0151,
+      "train_test_gap": 0.0953,
+      "best_params": "{\"learning_rate\": 0.1, \"max_depth\": 3}"
+    },
+    {
+      "name": "Logistic Regression",
+      "train_acc": 0.8625,
+      "test_acc": 0.8583,
+      "test_acc_ci": [
+        0.8271,
+        0.8917
+      ],
+      "test_macro_f1": 0.8584,
+      "test_f1_ci": [
+        0.8268,
+        0.8885
+      ],
+      "roc_auc": 0.9683,
+      "cv_macro_f1": 0.8535,
+      "cv_std": 0.0181,
+      "train_test_gap": 0.0042,
+      "best_params": "{\"C\": 10}"
+    },
+    {
+      "name": "KNN",
+      "train_acc": 0.8422,
+      "test_acc": 0.7792,
+      "test_acc_ci": [
+        0.7396,
+        0.8146
+      ],
+      "test_macro_f1": 0.7788,
+      "test_f1_ci": [
+        0.7408,
+        0.812
+      ],
+      "roc_auc": 0.9265,
+      "cv_macro_f1": 0.7815,
+      "cv_std": 0.0201,
+      "train_test_gap": 0.063,
+      "best_params": "{\"n_neighbors\": 11}"
+    }
+  ],
+  "baselines": [
+    {
+      "name": "Majority class",
+      "accuracy": 0.25,
+      "macro_f1": 0.1
+    },
+    {
+      "name": "Decision tree (depth 3), all features",
+      "accuracy": 0.7875,
+      "macro_f1": 0.7891
+    },
+    {
+      "name": "Decision tree (depth 3), mean_speed only",
+      "accuracy": 0.7875,
+      "macro_f1": 0.7891
+    },
+    {
+      "name": "Logistic Regression, speed features only (3)",
+      "accuracy": 0.8083,
+      "macro_f1": 0.8086
+    }
+  ],
+  "evaluation_method": "Test set (480 samples) used once after all tuning. 95% bootstrap CI computed from 1,000 resamples of test predictions.",
+  "cv_method": "5-fold stratified CV with GridSearchCV, scored by macro-F1, on the training set (1,920 samples) only."
+}
